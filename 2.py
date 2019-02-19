@@ -17,7 +17,7 @@ import cv2
 import matplotlib.pyplot as plt
 
 
-
+#
 
 def pooling_function(img,start_length,start_width,l,w):
     ans=-100000
