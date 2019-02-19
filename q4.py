@@ -22,7 +22,7 @@ def avg_pooling_function(inp,start_length,start_width,pool_length,pool_width,d):
             ans=ans+inp[start_length+i,start_width+j,d]
     ans=ans/(pool_length*pool_width)
     return ans
-    
+##
 def pooling(inp,pool_length,pool_width,pooling_function):
     inp_length=np.size(inp[:,0,0])
     inp_width=np.size(inp[0,:,0])
@@ -37,7 +37,7 @@ def pooling(inp,pool_length,pool_width,pooling_function):
     if(temp_w!=0):
         pad_width=pool_width-(inp_width-pool_width*int(inp_width/pool_width))
         inp_width_new=inp_width+pad_width
-    
+
     img=np.zeros((inp_length_new,inp_width_new,inp_depth))
     img[0:inp_length,0:inp_width,:]=inp
     l=int(inp_length_new/pool_length)
@@ -47,7 +47,7 @@ def pooling(inp,pool_length,pool_width,pooling_function):
         for j in range(l):
             for k in range(w):
                 output[j,k,i]=pooling_function(img,j*pool_length,k*pool_width,pool_length,pool_width,i)
-                
+
     return output
 depth=5
 inp= np.zeros((100,100,depth))
@@ -59,5 +59,3 @@ for i in range(inp_l):
         for k in range(depth):
             inp[i,j,k]= np.random.normal(0, 2, 1)
 test_pool1=pooling(inp,3,2,avg_pooling_function)
-        
-    
